@@ -16,13 +16,15 @@ import static me.zeroeightsix.kami.util.MessageSendHelper.sendRawChatMessage;
 /**
  * @author wnuke
  * Created by wnuke on 17/04/20
+ * Modified by Dewy on 24th of May, 2020
+ *
+ * jesus wnuke you really tryharded with this stashfinder o_O
  */
-
 public class CoordsCommand extends Command {
     public CoordsCommand() {
         super("coord", new ChunkBuilder()
                 .append("command", true, new EnumParser(new String[]{"add", "del", "list", "stashes", "help"}))
-                .append("name", false)
+                .append("name/id", false)
                 .build(), "pos");
         setDescription("Log the current coordinates.");
     }
@@ -49,13 +51,13 @@ public class CoordsCommand extends Command {
                     break;
                 case "del":
                     if (args[1] != null) {
-                        if (removeCoord(args[1], coordsLogFilename)) {
-                            sendChatMessage("Removed coordinate with name " + args[1]);
+                        if (removeCoord(Integer.parseInt(args[1]), coordsLogFilename)) {
+                            sendChatMessage("Removed coordinate with ID " + args[1]);
                         } else {
-                            sendChatMessage("No coordinate with name " + args[1]);
+                            sendChatMessage("No coordinate with ID " + args[1]);
                         }
                     } else {
-                        sendChatMessage("Please provide the name of a coordinate to remove.");
+                        sendChatMessage("Please provide the ID of a coordinate to remove.");
                     }
                     break;
                 case "help":

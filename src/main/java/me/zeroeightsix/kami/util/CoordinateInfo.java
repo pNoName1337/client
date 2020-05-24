@@ -19,18 +19,11 @@ public class CoordinateInfo {
     @SerializedName("id")
     public int id;
 
-    public CoordinateInfo(int x, int y, int z, String nameSet, String timeSet) {
-        xyz = new Coordinate(x, y, z);
-        name = nameSet;
-        time = timeSet;
-        id = CoordUtil.readCoords(CoordUtil.coordsLogFilename).size();
-    }
-
     public CoordinateInfo(Coordinate pos, String nameSet, String timeSet) {
         xyz = pos;
         name = nameSet;
         time = timeSet;
-        id = CoordUtil.readCoords(CoordUtil.coordsLogFilename).size();
+        id = CoordUtil.readCoords(CoordUtil.coordsLogFilename).get(CoordUtil.readCoords(CoordUtil.coordsLogFilename).size() - 1).id + 1;
     }
 
     public Coordinate getPos() {

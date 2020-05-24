@@ -45,17 +45,14 @@ public class CoordUtil {
         }
     }
 
-    public static boolean removeCoord(String name, String filename) {
+    public static boolean removeCoord(int id, String filename) {
         boolean removed = false;
         try {
             ArrayList<CoordinateInfo> coords = readCoords(filename);
-            for (CoordinateInfo coord : coords) {
-                if (coord.getName().equals(name)) {
-                    coords.remove(coord);
-                    removed = true;
-                    break;
-                }
-            }
+
+            coords.remove(id);
+            removed = true;
+
             FileWriter writer = new FileWriter(filename);
             gson.toJson(coords, writer);
             writer.flush();

@@ -118,7 +118,7 @@ public class DiscordPresence {
                         }
                         default: {
                             presence.smallImageKey = "donator2";
-                            presence.smallImageText = "donator <3";
+                            presence.smallImageText = "donator <3 uwu";
                             break;
                         }
                     }

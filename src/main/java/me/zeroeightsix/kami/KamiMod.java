@@ -71,7 +71,7 @@ public class KamiMod {
     public static final String MODNAME = "gamefence";
     public static final String MODID = "gamefence";
     public static final String MODVER = "b1-dev"; // this is changed to v1.x.x-commit for debugging during travis releases
-    public static final String MODVERSMALL = "b1-beta"; // shown to the user
+    public static final String MODVERSMALL = "b1"; // shown to the user
     public static final String MODVERBROAD = "b1"; // used for update checking
 
     public static final String MCVER = "1.12.2";

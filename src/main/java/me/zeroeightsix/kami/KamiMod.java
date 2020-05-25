@@ -68,8 +68,8 @@ import static me.zeroeightsix.kami.DiscordPresence.setCustomIcons;
 )
 public class KamiMod {
 
-    public static final String MODNAME = "gamefence";
-    public static final String MODID = "gamefence";
+    public static final String MODNAME = "KAMI Blue";
+    public static final String MODID = "kamiblue";
     public static final String MODVER = "b2-custom"; // this is changed to v1.x.x-commit for debugging during travis releases
     public static final String MODVERSMALL = "b2-custom"; // shown to the user
     public static final String MODVERBROAD = "b2-custom"; // used for update checking
@@ -90,7 +90,7 @@ public class KamiMod {
 
     private static final String KAMI_CONFIG_NAME_DEFAULT = "gamefencecfg.json";
 
-    public static final Logger log = LogManager.getLogger("gamefence");
+    public static final Logger log = LogManager.getLogger("KAMI Blue");
 
     public static final EventBus EVENT_BUS = new EventManager();
     public static final ModuleManager MODULE_MANAGER = new ModuleManager();
@@ -129,7 +129,7 @@ public class KamiMod {
     public void postInit(FMLPostInitializationEvent event) {
         setCustomIcons();
         if (MODULE_MANAGER.getModuleT(CommandConfig.class).customTitle.getValue()) {
-            Display.setTitle(MODNAME + " " + MODVERSMALL);
+            Display.setTitle("gamefence" + " " + MODVERSMALL);
         }
     }
 

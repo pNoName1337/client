@@ -70,7 +70,7 @@ public class DiscordPresence {
         state = discordRPC.getLine(discordRPC.line2Setting.getValue()) + " " + discordRPC.getLine(discordRPC.line4Setting.getValue());
         DiscordPresence.presence.details = details;
         DiscordPresence.presence.state = state;
-        DiscordPresence.presence.largeImageKey = "large";
+        DiscordPresence.presence.largeImageKey = "kami";
         DiscordPresence.presence.largeImageText = "blue.bella.wtf";
         DiscordPresence.rpc.Discord_UpdatePresence(DiscordPresence.presence);
     }

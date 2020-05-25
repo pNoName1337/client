@@ -70,8 +70,8 @@ public class DiscordPresence {
         state = discordRPC.getLine(discordRPC.line2Setting.getValue()) + " " + discordRPC.getLine(discordRPC.line4Setting.getValue());
         DiscordPresence.presence.details = details;
         DiscordPresence.presence.state = state;
-        DiscordPresence.presence.largeImageKey = "kami";
-        DiscordPresence.presence.largeImageText = "blue.bella.wtf";
+        DiscordPresence.presence.largeImageKey = "large";
+        DiscordPresence.presence.largeImageText = "get good get gamefence";
         DiscordPresence.rpc.Discord_UpdatePresence(DiscordPresence.presence);
     }
 
@@ -118,7 +118,7 @@ public class DiscordPresence {
                         }
                         default: {
                             presence.smallImageKey = "donator2";
-                            presence.smallImageText = "donator <3 uwu";
+                            presence.smallImageText = "$$$";
                             break;
                         }
                     }

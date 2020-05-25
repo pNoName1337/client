@@ -78,21 +78,21 @@ public class InfoOverlay extends Module {
         } if (time.getValue()) {
             infoContents.add(getStringColour(setToText(firstColour.getValue())) + TimeUtil.getFinalTime(setToText(secondColour.getValue()), setToText(firstColour.getValue()), timeUnitSetting.getValue(), timeTypeSetting.getValue(), doLocale.getValue()));
         } if (tps.getValue()) {
-            infoContents.add(getStringColour(setToText(firstColour.getValue())) + InfoCalculator.tps(decimalPlaces.getValue()) + getStringColour(setToText(secondColour.getValue())) + " TPS");
+            infoContents.add(getStringColour(setToText(firstColour.getValue())) + "TPS " + getStringColour(setToText(secondColour.getValue())) + InfoCalculator.tps(decimalPlaces.getValue()));
         } if (fps.getValue()) {
-            infoContents.add(getStringColour(setToText(firstColour.getValue())) + Minecraft.debugFPS + getStringColour(setToText(secondColour.getValue())) + " FPS");
+            infoContents.add(getStringColour(setToText(firstColour.getValue())) + "FPS " + getStringColour(setToText(secondColour.getValue())) + Minecraft.debugFPS);
         } if (speed.getValue()) {
-            infoContents.add(getStringColour(setToText(firstColour.getValue())) + speed(useUnitKmH(), mc, decimalPlaces.getValue()) + getStringColour(setToText(secondColour.getValue())) + " " + unitType(speedUnit.getValue()));
+            infoContents.add(getStringColour(setToText(firstColour.getValue())) + "Speed " + getStringColour(setToText(secondColour.getValue())) + speed(useUnitKmH(), mc, decimalPlaces.getValue()) + unitType(speedUnit.getValue()));
         } if (timerSpeed.getValue()) {
             infoContents.add(getStringColour(setToText(firstColour.getValue())) + TimerSpeed.returnGui() + getStringColour(setToText(secondColour.getValue())) + "t");
         } if (ping.getValue()) {
-            infoContents.add(getStringColour(setToText(firstColour.getValue())) + InfoCalculator.ping(mc) + getStringColour(setToText(secondColour.getValue())) + " ms");
+            infoContents.add(getStringColour(setToText(firstColour.getValue())) + "Ping " + getStringColour(setToText(secondColour.getValue())) + InfoCalculator.ping(mc) + " ms");
         } if (durability.getValue()) {
-            infoContents.add(getStringColour(setToText(firstColour.getValue())) + InfoCalculator.dura(mc) + getStringColour(setToText(secondColour.getValue())) + " durability");
+            infoContents.add(getStringColour(setToText(firstColour.getValue())) + "Durability " + getStringColour(setToText(secondColour.getValue())) + InfoCalculator.dura(mc));
         } if (biome.getValue()) {
-            infoContents.add(getStringColour(setToText(firstColour.getValue())) + mc.world.getBiome(mc.player.getPosition()).getBiomeName() + getStringColour(setToText(secondColour.getValue())) + " biome");
+            infoContents.add(getStringColour(setToText(firstColour.getValue())) + "Biome " + getStringColour(setToText(secondColour.getValue())) + mc.world.getBiome(mc.player.getPosition()).getBiomeName());
         } if (memory.getValue()) {
-            infoContents.add(getStringColour(setToText(firstColour.getValue())) + InfoCalculator.memory() + getStringColour(setToText(secondColour.getValue())) + "MB free");
+            infoContents.add(getStringColour(setToText(firstColour.getValue())) + "RAM free " + getStringColour(setToText(secondColour.getValue())) + InfoCalculator.memory() + "Mb");
         } if (totems.getValue()) {
         	infoContents.add(getStringColour(setToText(firstColour.getValue())) + getItems(Items.TOTEM_OF_UNDYING) + getStringColour(setToText(secondColour.getValue())) + " Totems");
         } if (endCrystals.getValue()) {
@@ -103,7 +103,7 @@ public class InfoOverlay extends Module {
         	infoContents.add(getStringColour(setToText(firstColour.getValue())) + getItems(Items.GOLDEN_APPLE) + getStringColour(setToText(secondColour.getValue())) + " God Apples");
         } if (credits.getValue()) {
             infoContents.add(getStringColour(setToText(firstColour.getValue()))  + "Originally made by " + getStringColour(setToText(secondColour.getValue())) + "086 & Bella");
-            infoContents.add(getStringColour(setToText(firstColour.getValue()))  + "Developed by " + getStringColour(setToText(secondColour.getValue())) + "pNoName");
+            infoContents.add(getStringColour(setToText(firstColour.getValue()))  + "Made by " + getStringColour(setToText(secondColour.getValue())) + "pNoName");
         }
         return infoContents;
     }
@@ -128,8 +128,8 @@ public class InfoOverlay extends Module {
 
     private String unitType(SpeedUnit s) {
         switch (s) {
-            case MPS: return "M/S";
-            case KMH: return "KM/H";
+            case MPS: return "m/s";
+            case KMH: return "km/h";
             default: return "Invalid unit type (mps or kmh)";
         }
     }

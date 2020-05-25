@@ -68,15 +68,15 @@ import static me.zeroeightsix.kami.DiscordPresence.setCustomIcons;
 )
 public class KamiMod {
 
-    public static final String MODNAME = "KAMI Blue";
-    public static final String MODID = "kamiblue";
-    public static final String MODVER = "v1.1.4-dev"; // this is changed to v1.x.x-commit for debugging during travis releases
-    public static final String MODVERSMALL = "v1.1.4-beta"; // shown to the user
-    public static final String MODVERBROAD = "v1.1.3"; // used for update checking
+    public static final String MODNAME = "gamefence";
+    public static final String MODID = "gamefence";
+    public static final String MODVER = "b1-dev"; // this is changed to v1.x.x-commit for debugging during travis releases
+    public static final String MODVERSMALL = "b1-beta"; // shown to the user
+    public static final String MODVERBROAD = "b1"; // used for update checking
 
     public static final String MCVER = "1.12.2";
 
-    public static final String APP_ID = "638403216278683661";
+    public static final String APP_ID = "714491474804473967";
 
     private static final String UPDATE_JSON = "https://raw.githubusercontent.com/kami-blue/assets/assets/assets/updateChecker.json";
     public static final String DONATORS_JSON = "https://raw.githubusercontent.com/kami-blue/assets/assets/assets/donators.json";
@@ -88,9 +88,9 @@ public class KamiMod {
     public static final char colour = '\u00A7';
     public static final char separator = '\u23d0';
 
-    private static final String KAMI_CONFIG_NAME_DEFAULT = "KAMIBlueConfig.json";
+    private static final String KAMI_CONFIG_NAME_DEFAULT = "gamefencecfg.json";
 
-    public static final Logger log = LogManager.getLogger("KAMI Blue");
+    public static final Logger log = LogManager.getLogger("gamefence");
 
     public static final EventBus EVENT_BUS = new EventManager();
     public static final ModuleManager MODULE_MANAGER = new ModuleManager();
@@ -120,7 +120,7 @@ public class KamiMod {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        updateCheck();
+        //updateCheck();
 
         pauseProcess = new TemporaryPauseProcess();
     }
@@ -129,7 +129,7 @@ public class KamiMod {
     public void postInit(FMLPostInitializationEvent event) {
         setCustomIcons();
         if (MODULE_MANAGER.getModuleT(CommandConfig.class).customTitle.getValue()) {
-            Display.setTitle(MODNAME + " " + KAMI_KANJI + " " + MODVERSMALL);
+            Display.setTitle(MODNAME + " " + MODVERSMALL);
         }
     }
 
@@ -173,7 +173,7 @@ public class KamiMod {
     }
 
     public static String getConfigName() {
-        Path config = Paths.get("KAMIBlueLastConfig.txt");
+        Path config = Paths.get("gamefencelastcfg.txt");
         String kamiConfigName = KAMI_CONFIG_NAME_DEFAULT;
         try (BufferedReader reader = Files.newBufferedReader(config)) {
             kamiConfigName = reader.readLine();

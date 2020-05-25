@@ -120,7 +120,7 @@ public class KamiMod {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        updateCheck();
+        //updateCheck();
 
         pauseProcess = new TemporaryPauseProcess();
     }

@@ -256,7 +256,7 @@ class AntiSpam : Module() {
                 ".+, are you even human? You act like my dog, holy shit.")
         val GREETER = arrayOf( // WWE
                 "Bye, Bye .+",
-                "Farwell, .+",  // Others(?)
+                "Farewell, .+",  // Others(?)
                 "See you next time, .+",
                 "Catch ya later, .+",
                 "Bye, .+",
@@ -266,7 +266,9 @@ class AntiSpam : Module() {
                 ".+ has joined",
                 ".+ joined the lobby",
                 "Welcome .+",
-                ".+ left the game")
+                ".+ left the game",
+                "joined.",
+                "left.")
         val DISCORD = arrayOf(
                 "discord.gg",
                 "discordapp.com",

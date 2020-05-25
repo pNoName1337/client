@@ -41,7 +41,7 @@ public class InfoOverlay extends Module {
     private Setting<Boolean> tps = register(Settings.booleanBuilder("TPS").withValue(true).withVisibility(v -> page.getValue().equals(Page.ONE)).build());
     private Setting<Boolean> fps = register(Settings.booleanBuilder("FPS").withValue(true).withVisibility(v -> page.getValue().equals(Page.ONE)).build());
     private Setting<Boolean> ping = register(Settings.booleanBuilder("Ping").withValue(false).withVisibility(v -> page.getValue().equals(Page.ONE)).build());
-    private Setting<Boolean> durability = register(Settings.booleanBuilder("Item Damage").withValue(false).withVisibility(v -> page.getValue().equals(Page.ONE)).build());
+    private Setting<Boolean> durability = register(Settings.booleanBuilder("Item Damage").withValue(false).withVisibility(v -> page.getValue().equals(  Page.ONE)).build());
     private Setting<Boolean> biome = register(Settings.booleanBuilder("Biome").withValue(false).withVisibility(v -> page.getValue().equals(Page.ONE)).build());
     private Setting<Boolean> memory = register(Settings.booleanBuilder("RAM Used").withValue(false).withVisibility(v -> page.getValue().equals(Page.ONE)).build());
     private Setting<Boolean> timerSpeed = register(Settings.booleanBuilder("Timer Speed").withValue(false).withVisibility(v -> page.getValue().equals(Page.ONE)).build());
@@ -103,7 +103,7 @@ public class InfoOverlay extends Module {
         	infoContents.add(getStringColour(setToText(firstColour.getValue())) + getItems(Items.GOLDEN_APPLE) + getStringColour(setToText(secondColour.getValue())) + " God Apples");
         } if (credits.getValue()) {
             infoContents.add(getStringColour(setToText(firstColour.getValue()))  + "Originally made by " + getStringColour(setToText(secondColour.getValue())) + "086 & Bella");
-            infoContents.add(getStringColour(setToText(firstColour.getValue()))  + "Made by " + getStringColour(setToText(secondColour.getValue())) + "pNoName");
+            infoContents.add(getStringColour(setToText(firstColour.getValue()))  + "Developed by " + getStringColour(setToText(secondColour.getValue())) + "pNoName");
         }
         return infoContents;
     }

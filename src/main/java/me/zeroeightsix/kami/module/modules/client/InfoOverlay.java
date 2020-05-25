@@ -60,7 +60,7 @@ public class InfoOverlay extends Module {
     public Setting<Boolean> doLocale = register(Settings.booleanBuilder("Time Show AM/PM").withValue(true).withVisibility(v -> page.getValue().equals(Page.THREE) && time.getValue() && timeUnitSetting.getValue().equals(TimeUtil.TimeUnit.H12)).build());
     public Setting<ColourTextFormatting.ColourCode> firstColour = register(Settings.enumBuilder(ColourTextFormatting.ColourCode.class).withName("First Colour").withValue(ColourTextFormatting.ColourCode.WHITE).withVisibility(v -> page.getValue().equals(Page.THREE)).build());
     public Setting<ColourTextFormatting.ColourCode> secondColour = register(Settings.enumBuilder(ColourTextFormatting.ColourCode.class).withName("Second Colour").withValue(ColourTextFormatting.ColourCode.BLUE).withVisibility(v -> page.getValue().equals(Page.THREE)).build());
-
+    private Setting<Boolean> credits = register(Settings.booleanBuilder("Credits").withValue(true).withVisibility(v -> page.getValue().equals(Page.THREE)).build());
     public static String getStringColour(TextFormatting c) {
         return c.toString();
     }
@@ -74,13 +74,13 @@ public class InfoOverlay extends Module {
         if (version.getValue()) {
             infoContents.add(getStringColour(setToText(firstColour.getValue())) + KamiMod.KAMI_KANJI + getStringColour(setToText(secondColour.getValue())) + " " + KamiMod.MODVERSMALL);
         } if (username.getValue()) {
-            infoContents.add(getStringColour(setToText(firstColour.getValue())) + "Welcome" + getStringColour(setToText(secondColour.getValue())) + " " + mc.getSession().getUsername() + "!");
+            infoContents.add(getStringColour(setToText(firstColour.getValue())) + "Welcome" + getStringColour(setToText(secondColour.getValue())) + " " + mc.getSession().getUsername());
         } if (time.getValue()) {
             infoContents.add(getStringColour(setToText(firstColour.getValue())) + TimeUtil.getFinalTime(setToText(secondColour.getValue()), setToText(firstColour.getValue()), timeUnitSetting.getValue(), timeTypeSetting.getValue(), doLocale.getValue()));
         } if (tps.getValue()) {
-            infoContents.add(getStringColour(setToText(firstColour.getValue())) + InfoCalculator.tps(decimalPlaces.getValue()) + getStringColour(setToText(secondColour.getValue())) + " tps");
+            infoContents.add(getStringColour(setToText(firstColour.getValue())) + InfoCalculator.tps(decimalPlaces.getValue()) + getStringColour(setToText(secondColour.getValue())) + " TPS");
         } if (fps.getValue()) {
-            infoContents.add(getStringColour(setToText(firstColour.getValue())) + Minecraft.debugFPS + getStringColour(setToText(secondColour.getValue())) + " fps");
+            infoContents.add(getStringColour(setToText(firstColour.getValue())) + Minecraft.debugFPS + getStringColour(setToText(secondColour.getValue())) + " FPS");
         } if (speed.getValue()) {
             infoContents.add(getStringColour(setToText(firstColour.getValue())) + speed(useUnitKmH(), mc, decimalPlaces.getValue()) + getStringColour(setToText(secondColour.getValue())) + " " + unitType(speedUnit.getValue()));
         } if (timerSpeed.getValue()) {
@@ -88,11 +88,11 @@ public class InfoOverlay extends Module {
         } if (ping.getValue()) {
             infoContents.add(getStringColour(setToText(firstColour.getValue())) + InfoCalculator.ping(mc) + getStringColour(setToText(secondColour.getValue())) + " ms");
         } if (durability.getValue()) {
-            infoContents.add(getStringColour(setToText(firstColour.getValue())) + InfoCalculator.dura(mc) + getStringColour(setToText(secondColour.getValue())) + " dura");
+            infoContents.add(getStringColour(setToText(firstColour.getValue())) + InfoCalculator.dura(mc) + getStringColour(setToText(secondColour.getValue())) + " durability");
         } if (biome.getValue()) {
             infoContents.add(getStringColour(setToText(firstColour.getValue())) + mc.world.getBiome(mc.player.getPosition()).getBiomeName() + getStringColour(setToText(secondColour.getValue())) + " biome");
         } if (memory.getValue()) {
-            infoContents.add(getStringColour(setToText(firstColour.getValue())) + InfoCalculator.memory() + getStringColour(setToText(secondColour.getValue())) + "mB free");
+            infoContents.add(getStringColour(setToText(firstColour.getValue())) + InfoCalculator.memory() + getStringColour(setToText(secondColour.getValue())) + "MB free");
         } if (totems.getValue()) {
         	infoContents.add(getStringColour(setToText(firstColour.getValue())) + getItems(Items.TOTEM_OF_UNDYING) + getStringColour(setToText(secondColour.getValue())) + " Totems");
         } if (endCrystals.getValue()) {
@@ -101,7 +101,10 @@ public class InfoOverlay extends Module {
         	infoContents.add(getStringColour(setToText(firstColour.getValue())) + getItems(Items.EXPERIENCE_BOTTLE) + getStringColour(setToText(secondColour.getValue())) + " EXP Bottles");
         } if (godApples.getValue()) {
         	infoContents.add(getStringColour(setToText(firstColour.getValue())) + getItems(Items.GOLDEN_APPLE) + getStringColour(setToText(secondColour.getValue())) + " God Apples");
+        } if (credits.getValue()) {
+            infoContents.add(getStringColour(setToText(firstColour.getValue()))  + "Originally made by " + getStringColour(setToText(secondColour.getValue())) + "086 & Bella");
         }
+        infoContents.add(getStringColour(setToText(firstColour.getValue()))  + "Developed by " + getStringColour(setToText(secondColour.getValue())) + "pNoName");
         return infoContents;
     }
 
@@ -125,8 +128,8 @@ public class InfoOverlay extends Module {
 
     private String unitType(SpeedUnit s) {
         switch (s) {
-            case MPS: return "m/s";
-            case KMH: return "km/h";
+            case MPS: return "M/S";
+            case KMH: return "KM/H";
             default: return "Invalid unit type (mps or kmh)";
         }
     }

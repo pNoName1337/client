@@ -84,7 +84,7 @@ public class KamiMod {
     public static final String GITHUB_LINK = "https://github.com/kami-blue/";
     public static final String WEBSITE_LINK = "https://blue.bella.wtf";
 
-    public static final String KAMI_KANJI = "\u30ab\u30df\u30d6\u30eb";
+    public static final String KAMI_KANJI = /*"\u30ab\u30df\u30d6\u30eb"*/ "gamefence";
     public static final char colour = '\u00A7';
     public static final char separator = '\u23d0';
 

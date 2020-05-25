@@ -103,8 +103,8 @@ public class InfoOverlay extends Module {
         	infoContents.add(getStringColour(setToText(firstColour.getValue())) + getItems(Items.GOLDEN_APPLE) + getStringColour(setToText(secondColour.getValue())) + " God Apples");
         } if (credits.getValue()) {
             infoContents.add(getStringColour(setToText(firstColour.getValue()))  + "Originally made by " + getStringColour(setToText(secondColour.getValue())) + "086 & Bella");
+            infoContents.add(getStringColour(setToText(firstColour.getValue()))  + "Developed by " + getStringColour(setToText(secondColour.getValue())) + "pNoName");
         }
-        infoContents.add(getStringColour(setToText(firstColour.getValue()))  + "Developed by " + getStringColour(setToText(secondColour.getValue())) + "pNoName");
         return infoContents;
     }
 

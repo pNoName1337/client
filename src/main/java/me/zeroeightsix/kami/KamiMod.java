@@ -70,13 +70,13 @@ public class KamiMod {
 
     public static final String MODNAME = "gamefence";
     public static final String MODID = "gamefence";
-    public static final String MODVER = "b1"; // this is changed to v1.x.x-commit for debugging during travis releases
-    public static final String MODVERSMALL = "b1"; // shown to the user
-    public static final String MODVERBROAD = "b1"; // used for update checking
+    public static final String MODVER = "b2-custom"; // this is changed to v1.x.x-commit for debugging during travis releases
+    public static final String MODVERSMALL = "b2-custom"; // shown to the user
+    public static final String MODVERBROAD = "b2-custom"; // used for update checking
 
     public static final String MCVER = "1.12.2";
 
-    public static final String APP_ID = "714491474804473967";
+    public static final String APP_ID = "638403216278683661"; // 714491474804473967
 
     private static final String UPDATE_JSON = "https://raw.githubusercontent.com/kami-blue/assets/assets/assets/updateChecker.json";
     public static final String DONATORS_JSON = "https://raw.githubusercontent.com/kami-blue/assets/assets/assets/donators.json";

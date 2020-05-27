@@ -1,5 +1,6 @@
 package me.zeroeightsix.kami.module.modules.player
 
+import baritone.api.BaritoneAPI
 import me.zero.alpine.listener.EventHandler
 import me.zero.alpine.listener.EventHook
 import me.zero.alpine.listener.Listener
@@ -29,6 +30,7 @@ import net.minecraft.client.gui.GuiChat
 )
 class LagNotifier : Module() {
     var pauseDuringLag: Setting<Boolean> = register(Settings.b("Pause Baritone", true))
+    private val feedback = register(Settings.booleanBuilder("Pause Feedback").withValue(true).withVisibility { pauseDuringLag.value }.build())
     private val timeout = register(Settings.doubleBuilder().withName("Timeout").withValue(2.0).withMinimum(0.0).withMaximum(10.0).build())
 
     private var serverLastUpdated: Long = 0
@@ -36,24 +38,25 @@ class LagNotifier : Module() {
     var text = "Server Not Responding! "
 
     override fun onRender() {
-        if (mc.currentScreen != null && mc.currentScreen !is GuiChat) return
+        if ((mc.currentScreen != null && mc.currentScreen !is GuiChat) || mc.isIntegratedServerRunning) return
         if (1000L *  timeout.value.toDouble() > System.currentTimeMillis() - serverLastUpdated) {
             if (!hasUnpaused && pauseDuringLag.value) {
                 hasUnpaused = true
-                MessageSendHelper.sendBaritoneMessage("Unpaused!")
+                if (feedback.value) MessageSendHelper.sendBaritoneMessage("Unpaused!")
                 unpause()
             }
             return
         }
 
         if (shouldPing()) {
-            text = if (WebHelper.isDown("1.1.1.1", 80, 1000)) {
+            WebHelper.run()
+            text = if (WebHelper.isInternetDown) {
                 "Your internet is offline! "
             } else {
                 "Server Not Responding! "
             }
-            if (hasUnpaused && pauseDuringLag.value) {
-                MessageSendHelper.sendBaritoneMessage("Paused due to lag!")
+            if (hasUnpaused && pauseDuringLag.value && BaritoneAPI.getProvider().primaryBaritone.customGoalProcess.goal != null) {
+                if (feedback.value) MessageSendHelper.sendBaritoneMessage("Paused due to lag!")
                 pause()
                 hasUnpaused = false
             }

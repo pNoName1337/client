@@ -17,7 +17,7 @@ import java.io.IOException;
  */
 @Module.Info(
         name = "ColourSign",
-        description = "Allows ingame colouring of text on signs",
+        description = "Allows ingame colouring of text on signs (patched on most servers)",
         category = Module.Category.MISC
 )
 public class ColourSign extends Module {

@@ -15,7 +15,7 @@ import net.minecraft.tileentity.TileEntitySign
  */
 @Module.Info(
         name = "ConsoleSpam",
-        description = "Spams Spigot consoles by sending invalid UpdateSign packets",
+        description = "Spams Spigot/Paper consoles by sending invalid UpdateSign packets",
         category = Module.Category.MISC
 )
 class ConsoleSpam : Module() {

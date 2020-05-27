@@ -19,7 +19,7 @@ import kotlin.math.roundToInt
 @Module.Info(
         name = "StashFinder",
         category = Module.Category.MISC,
-        description = "Logs storage units in render distance."
+        description = "Logs storage units in render distance"
 )
 class StashFinder : Module() {
     private val logToChat = register(Settings.b("Log To Chat"))

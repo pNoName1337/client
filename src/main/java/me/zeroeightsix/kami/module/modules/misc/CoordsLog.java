@@ -10,7 +10,7 @@ import static me.zeroeightsix.kami.util.MessageSendHelper.sendChatMessage;
 
 @Module.Info(
         name = "CoordsLog",
-        description = "Automatically writes the coordinates of the player to a file with a user defined delay between logs.",
+        description = "Automatically writes the coordinates of the player to a file with a user defined delay between logs",
         category = Module.Category.MISC,
         showOnArray = Module.ShowOnArray.ON
 )

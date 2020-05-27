@@ -76,6 +76,10 @@ public class KamiMod {
 
     public static final String MCVER = "1.12.2";
 
+    /** Changed some stuff
+     * 714491474804473967 - custom RPC
+     * 638403216278683661 - default KAMI Blue RPC
+     */
     public static final String APP_ID = "638403216278683661"; // 714491474804473967
 
     private static final String UPDATE_JSON = "https://raw.githubusercontent.com/kami-blue/assets/assets/assets/updateChecker.json";

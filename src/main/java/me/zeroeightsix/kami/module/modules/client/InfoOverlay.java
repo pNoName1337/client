@@ -81,18 +81,18 @@ public class InfoOverlay extends Module {
             infoContents.add(getStringColour(setToText(firstColour.getValue())) + "TPS " + getStringColour(setToText(secondColour.getValue())) + InfoCalculator.tps(decimalPlaces.getValue()));
         } if (fps.getValue()) {
             infoContents.add(getStringColour(setToText(firstColour.getValue())) + "FPS " + getStringColour(setToText(secondColour.getValue())) + Minecraft.debugFPS);
+        } if (ping.getValue()) {
+            infoContents.add(getStringColour(setToText(firstColour.getValue())) + "Ping " + getStringColour(setToText(secondColour.getValue())) + InfoCalculator.ping(mc) + "ms");
         } if (speed.getValue()) {
             infoContents.add(getStringColour(setToText(firstColour.getValue())) + "Speed " + getStringColour(setToText(secondColour.getValue())) + speed(useUnitKmH(), mc, decimalPlaces.getValue()) + unitType(speedUnit.getValue()));
         } if (timerSpeed.getValue()) {
             infoContents.add(getStringColour(setToText(firstColour.getValue())) + TimerSpeed.returnGui() + getStringColour(setToText(secondColour.getValue())) + "t");
-        } if (ping.getValue()) {
-            infoContents.add(getStringColour(setToText(firstColour.getValue())) + "Ping " + getStringColour(setToText(secondColour.getValue())) + InfoCalculator.ping(mc) + " ms");
-        } if (durability.getValue()) {
-            infoContents.add(getStringColour(setToText(firstColour.getValue())) + "Durability " + getStringColour(setToText(secondColour.getValue())) + InfoCalculator.dura(mc));
         } if (biome.getValue()) {
             infoContents.add(getStringColour(setToText(firstColour.getValue())) + "Biome " + getStringColour(setToText(secondColour.getValue())) + mc.world.getBiome(mc.player.getPosition()).getBiomeName());
         } if (memory.getValue()) {
             infoContents.add(getStringColour(setToText(firstColour.getValue())) + "RAM free " + getStringColour(setToText(secondColour.getValue())) + InfoCalculator.memory() + "Mb");
+        } if (durability.getValue()) {
+            infoContents.add(getStringColour(setToText(firstColour.getValue())) + "Durability " + getStringColour(setToText(secondColour.getValue())) + InfoCalculator.dura(mc));
         } if (totems.getValue()) {
         	infoContents.add(getStringColour(setToText(firstColour.getValue())) + getItems(Items.TOTEM_OF_UNDYING) + getStringColour(setToText(secondColour.getValue())) + " Totems");
         } if (endCrystals.getValue()) {

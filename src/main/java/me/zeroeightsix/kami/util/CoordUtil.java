@@ -32,6 +32,11 @@ public class CoordUtil {
         return coords;
     }
 
+    public static Coordinate writeCustomCoords(Coordinate xyz, String locationName) {
+        writeCoords(xyz, locationName, coordsLogFilename);
+        return xyz;
+    }
+
     public static void writeCoords(Coordinate xyz, String locationName, String filename) {
         try {
             ArrayList<CoordinateInfo> coords = readCoords(filename);

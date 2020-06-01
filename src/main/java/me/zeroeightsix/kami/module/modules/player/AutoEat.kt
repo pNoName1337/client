@@ -1,8 +1,11 @@
 package me.zeroeightsix.kami.module.modules.player
 
+import baritone.api.BaritoneAPI
 import me.zeroeightsix.kami.KamiMod.MODULE_MANAGER
 import me.zeroeightsix.kami.module.Module
+import me.zeroeightsix.kami.module.modules.client.Baritone
 import me.zeroeightsix.kami.module.modules.combat.Aura
+import me.zeroeightsix.kami.setting.Setting
 import me.zeroeightsix.kami.setting.Settings
 import me.zeroeightsix.kami.util.BaritoneUtils.pause
 import me.zeroeightsix.kami.util.BaritoneUtils.unpause
@@ -30,22 +33,25 @@ class AutoEat : Module() {
     private val foodLevel = register(Settings.integerBuilder("Below Hunger").withValue(15).withMinimum(1).withMaximum(20).build())
     private val healthLevel = register(Settings.integerBuilder("Below Health").withValue(8).withMinimum(1).withMaximum(20).build())
 
-    var pauseBaritone = register(Settings.b("Pause Baritone", true))
+    var pauseBaritone: Setting<Boolean> = register(Settings.b("Pause Baritone", true))
 
     private var lastSlot = -1
     var eating = false
 
     private fun isValid(stack: ItemStack, food: Int): Boolean {
         return passItemCheck(stack) && stack.getItem() is ItemFood && foodLevel.value - food >= (stack.getItem() as ItemFood).getHealAmount(stack) ||
-               passItemCheck(stack) && stack.getItem() is ItemFood && healthLevel.value - (mc.player.health + mc.player.absorptionAmount) > 0f
+                passItemCheck(stack) && stack.getItem() is ItemFood && healthLevel.value - (mc.player.health + mc.player.absorptionAmount) > 0f
     }
 
     private fun passItemCheck(stack: ItemStack): Boolean {
         val item: Item = stack.getItem()
-        if (item === Items.ROTTEN_FLESH) return false
-        if (item === Items.SPIDER_EYE) return false
-        if (item === Items.POISONOUS_POTATO) return false
-        if (item === Items.FISH && (stack.metadata == 3 || stack.metadata == 2)) return false // Pufferfish, Clown fish
+        if (item === Items.ROTTEN_FLESH
+                || item === Items.SPIDER_EYE
+                || item === Items.POISONOUS_POTATO
+                || (item === Items.FISH && (stack.metadata == 3 || stack.metadata == 2)) // Pufferfish, Clown fish
+                || item === Items.CHORUS_FRUIT) {
+            return false
+        }
         return true
     }
 
@@ -59,10 +65,10 @@ class AutoEat : Module() {
             }
             eating = false
 
-            if (pauseBaritone.value)
-            {
+            if (pauseBaritone.value) {
                 unpause()
             }
+            BaritoneAPI.getSettings().allowInventory.value = false
 
             KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.keyCode, false)
             return
@@ -76,10 +82,10 @@ class AutoEat : Module() {
             mc.player.activeHand = EnumHand.OFF_HAND
             eating = true
 
-            if (pauseBaritone.value)
-            {
+            if (pauseBaritone.value) {
                 pause()
             }
+            BaritoneAPI.getSettings().allowInventory.value = MODULE_MANAGER.getModuleT(Baritone::class.java).allowInventory.value
 
             KeyBinding.setKeyBindState(mc.gameSettings.keyBindUseItem.keyCode, true)
             mc.playerController.processRightClick(mc.player, mc.world, EnumHand.OFF_HAND)
@@ -90,8 +96,7 @@ class AutoEat : Module() {
                     mc.player.inventory.currentItem = i
                     eating = true
 
-                    if (pauseBaritone.value)
-                    {
+                    if (pauseBaritone.value) {
                         pause()
                     }
 

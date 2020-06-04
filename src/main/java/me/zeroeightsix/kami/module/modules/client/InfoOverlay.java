@@ -77,10 +77,10 @@ public class InfoOverlay extends Module {
             infoContents.add(getStringColour(setToText(firstColour.getValue())) + "Welcome" + getStringColour(setToText(secondColour.getValue())) + " " + mc.getSession().getUsername());
         } if (time.getValue()) {
             infoContents.add(getStringColour(setToText(firstColour.getValue())) + TimeUtil.getFinalTime(setToText(secondColour.getValue()), setToText(firstColour.getValue()), timeUnitSetting.getValue(), timeTypeSetting.getValue(), doLocale.getValue()));
-        } if (tps.getValue()) {
-            infoContents.add(getStringColour(setToText(firstColour.getValue())) + "TPS " + getStringColour(setToText(secondColour.getValue())) + InfoCalculator.tps(decimalPlaces.getValue()));
         } if (fps.getValue()) {
             infoContents.add(getStringColour(setToText(firstColour.getValue())) + "FPS " + getStringColour(setToText(secondColour.getValue())) + Minecraft.debugFPS);
+        } if (tps.getValue()) {
+            infoContents.add(getStringColour(setToText(firstColour.getValue())) + "TPS " + getStringColour(setToText(secondColour.getValue())) + InfoCalculator.tps(decimalPlaces.getValue()));
         } if (ping.getValue()) {
             infoContents.add(getStringColour(setToText(firstColour.getValue())) + "Ping " + getStringColour(setToText(secondColour.getValue())) + InfoCalculator.ping(mc) + "ms");
         } if (speed.getValue()) {

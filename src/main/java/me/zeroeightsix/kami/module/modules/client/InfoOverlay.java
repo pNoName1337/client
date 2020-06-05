@@ -81,7 +81,7 @@ public class InfoOverlay extends Module {
             infoContents.add(getStringColour(setToText(firstColour.getValue())) + "FPS " + getStringColour(setToText(secondColour.getValue())) + Minecraft.debugFPS);
         } if (tps.getValue()) {
             infoContents.add(getStringColour(setToText(firstColour.getValue())) + "TPS " + getStringColour(setToText(secondColour.getValue())) + InfoCalculator.tps(decimalPlaces.getValue()));
-        } if (ping.getValue()) {
+        } if (ping.getValue() && mc.getCurrentServerData() != null) {
             infoContents.add(getStringColour(setToText(firstColour.getValue())) + "Ping " + getStringColour(setToText(secondColour.getValue())) + InfoCalculator.ping(mc) + "ms");
         } if (speed.getValue()) {
             infoContents.add(getStringColour(setToText(firstColour.getValue())) + "Speed " + getStringColour(setToText(secondColour.getValue())) + speed(useUnitKmH(), mc, decimalPlaces.getValue()) + unitType(speedUnit.getValue()));

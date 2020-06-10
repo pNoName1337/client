@@ -24,7 +24,7 @@ class FancyChat : Module() {
     private val uwu = register(Settings.b("uwu", true))
     private val leet = register(Settings.b("1337", false))
     private val mock = register(Settings.b("mOcK", false))
-    private val green = register(Settings.b(">", false))
+    private val green = register(Settings.b("green", false))
     private val randomSetting = register(Settings.booleanBuilder("Random Case").withValue(true).withVisibility { mock.value }.build())
     private val commands = register(Settings.b("Commands", false))
 
@@ -66,7 +66,7 @@ class FancyChat : Module() {
             returned.append(" mOcK")
         }
         if (green.value) {
-            returned.append(" >")
+            returned.append(" green")
         }
         return returned.toString()
     }
